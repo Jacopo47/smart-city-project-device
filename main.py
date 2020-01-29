@@ -25,7 +25,7 @@ def redis_connection():
     if redis_pw == "NONE":
         return Database(host=redis_host, port=redis_port, db=0)
     else:
-        return Database(host=redis_host, port=redis_port, db=0, auth=redis_pw)
+        return Database(host=redis_host, port=redis_port, db=0, password=redis_pw)
 
 
 while True:
@@ -42,7 +42,8 @@ while True:
             'latitude': lat,
             'longitude': long
         }
+	
         print(stream.add(value))
     else:
         print('Sensor read error... retry!!!')
-    time.sleep(20)
+    time.sleep(5)
